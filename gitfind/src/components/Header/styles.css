@@ -1,0 +1,17 @@
+
+
+header{
+    background-color: #2D333B;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+h1{
+    color: white;
+    font-family: "Inter";
+    
+    font-size: 30px;
+}

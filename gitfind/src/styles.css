@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #24292F;
+    
+}
+
+hr{
+    background-color: #2D333B;
+    border: 1ps solid #2D333B
+}

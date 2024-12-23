@@ -1,0 +1,96 @@
+main{
+    overflow-x: hidden;
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: row;
+   
+
+}
+
+.bg-container{
+    width: 40%;
+    position: relative;
+    z-index: -1;
+}
+.githubBg{  
+    position: fixed;
+    top: 55%;
+    width: 500px;
+    transform: translate(-35%, -50%);
+}
+
+.content{
+    width: 60%;
+    margin-top: 100px;
+    margin-right: 50px;
+    color: white;
+}
+
+.container-busca{
+    display: flex;
+    flex-direction: row;
+
+}
+
+input{
+    width: 80%;
+    height: 50px;
+    padding: 10px;
+    color: #999999;
+    border: 1px solid  #999999;
+    border-radius: 20px;
+    background-color: inherit;
+    
+}
+button{
+    width: 20%;
+    height: 50px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid  #999999;
+    border-radius: 20px;
+    color: #999999;
+    background-color: #2D333B;
+}
+
+.profile{
+    display: flex;
+    flex-direction: row;
+    
+    margin: 20px 0;
+    color: #999999;
+}
+
+.profile-img{
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid #999999;
+}
+
+
+.profile-content{
+    margin: 10px;
+    margin-left: 10px;
+}
+
+
+.profile h3{
+    color: #999999;
+    font-size: 24px;
+}
+.profile span{
+    color: #999999;
+    font-size: 15px;
+    
+}
+.profile p{
+    margin-top: 20px;
+    color: #999999;
+    font-size: 15px;
+}
+
+.repositorio{
+    margin: 20px auto;
+    text-align: center;
+    font-size: 30px;
+}
