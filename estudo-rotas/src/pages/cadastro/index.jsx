@@ -76,8 +76,7 @@ const Cadastro = () => {
                            
                         
                         <Row>
-                            <EsqueciText>Esqueci minha senha</EsqueciText>
-                            <CriarText>Criar conta</CriarText>
+                            <p>Já tenho uma conta. <a href='/login' style={{ color:"#00FF00"  }}>Fazer Login</a></p>
                         </Row>
                        
                     </Wrapper>
