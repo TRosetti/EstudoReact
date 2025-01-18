@@ -1,5 +1,4 @@
-
-import {MdEmail, MdLock } from 'react-icons/md'; // icones de email e cadeadi
+import {MdEmail, MdLock, MdPerson } from 'react-icons/md'; // icones de email e cadeadi
 import { useNavigate } from 'react-router-dom'; // utilizado para navegação
 
 import { Button } from '../../components/button';
@@ -7,19 +6,22 @@ import {Header} from '../../components/header'
 import {Input}from '../../components/Input';
 
 import { useForm } from "react-hook-form"; // hook para mexer no formulário
-import {CriarText, Column, Container, EsqueciText, Row, SubTitleLogin, Title, TitleLogin, Wrapper} from './styles'
+import { Column, Container, Row, SubTitleLogin, Title, TitleLogin, Wrapper, PoliticasPrivacidade} from './styles'
 
 import { api } from "../../services/api";
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
+import { IformData } from '../login/types';
 
 const schema = yup.object({
+    nome: yup.string().required(),
     email: yup.string().email('email não é válido').required('Campo obrigatório'),
     password: yup.string().min(3, 'No minimo 3 caracteres').required('Campo obrigatório'),
-}).required()
+}).required();
 
 
-const Login = () => {
+
+const Cadastro = () => {
 
     const navigate = useNavigate();
 
@@ -31,16 +33,20 @@ const Login = () => {
     
     console.log(isValid, errors)
 
-    const onSubmit = async formData => {
+    const onSubmit = async (formData: IformData) => {
         try {
-           const { data } = await api.get(`users?email=${formData.email}&senha=${formData.password}`);
-            if(data.length === 1 ){
-                navigate('/feed')
-            }else{
-               alert("Email ou senha inválida.")
+            const response = await api.post("users", {
+                nome: formData.nome,
+                email: formData.email,
+                senha: formData.password,
+            });
+
+            if (response.status === 201) {
+                alert("Cadastro realizado com sucesso!");
+                navigate('/feed');
             }
         } catch (error) {
-           alert("Houve um erro, error: " + error)
+            alert("Erro ao cadastrar o usuário. Por favor, tente novamente. Erro: " + error);
         }
     }
     
@@ -61,18 +67,23 @@ const Login = () => {
                         <TitleLogin>Faça seu cadastro</TitleLogin>
                         <SubTitleLogin>Faça seu login e make the change.</SubTitleLogin>
                         <form onSubmit={handleSubmit(onSubmit)}>
+                            <Input name='nome' errorMessage={errors?.nome?.message} control={control} placeholder="Nome Completo" leftIcon={(<MdPerson />)} />
                             <Input name='email' errorMessage={errors?.email?.message}  control={control} placeholder="Email" leftIcon={(<MdEmail />)}/>
                             <Input name='password' errorMessage={errors?.password?.message}   control={control}  placeholder="Senha" type="password" leftIcon={(<MdLock />)}/>
                             <Button title="Entrar" variant="secondary"  type="submit"/>
                         </form>
+                       
+                        <PoliticasPrivacidade>Ao clicar em "criar minha conta grátis", declaro que aceito as Políticas de Privacidade e os Termos de Uso da DIO.</PoliticasPrivacidade>
+                           
+                        
                         <Row>
-                            <EsqueciText>Esqueci minha senha</EsqueciText>
-                            <CriarText>Criar conta</CriarText>
+                            <p>Já tenho uma conta. <a href='/login' style={{ color:"#00FF00"  }}>Fazer Login</a></p>
                         </Row>
+                       
                     </Wrapper>
                 </Column>
             </Container>
         </div>
     )
 }
-export { Login };
+export { Cadastro };

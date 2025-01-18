@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from '../../assets/logo.webp';
 import { Button } from '../button';
-
+import {IHeader} from './types'
+ 
 import { 
   Container,
   BuscarInputContainer,
@@ -14,7 +15,7 @@ import {
 
 } from './styles';
 
-const Header = ({autenticado}) => {
+const Header = ({autenticado}: IHeader) => {
   return (
     <Wrapper>
       <Container>

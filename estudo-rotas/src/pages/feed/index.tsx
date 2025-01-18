@@ -1,5 +1,3 @@
-
-// import { Button } from '../../components/button';
 import {Header} from '../../components/header'
 import {Card} from '../../components/card'
 import {UserInfo} from '../../components/userInfo'
