@@ -1,0 +1,114 @@
+-- Passos para criar um projeto react --
+
+1º Abra o terminal no VS Code
+
+2º Digite:
+    npx creat-react-app
+
+3º Apague os arquivos 
+    (setupTests.js, reportWebVitals.js, App.test.js)
+
+4º Vá para o arquivo index.js e app.js, apague os links relacionados aos arquivos a cime 
+
+5º Digite no terminal: 
+npm start (verifique se deu certo)
+
+6ª Baixe as dependências que vão ser usadas 
+    Exemplo:
+    npm install react-router-dom axios json-server react-icons styled-components react-hook-form
+
+    react-router-dom: Biblioteca para gerenciamento de rotas em aplicações React.
+    axios: Cliente HTTP para fazer requisições para APIs.
+    json-server: Para rodar um servidor falso de API com dados em formato JSON (útil para desenvolvimento).
+    react-icons: Biblioteca para ícones do React.
+    styled-components: Para estilização de componentes com CSS-in-JS.
+    react-hook-form: Biblioteca para gerenciamento de formulários de forma simples e eficiente no React.
+
+7ª Configurar dependencias 
+
+    (a) React Router (react-router-dom)
+        1. Crie um arquivo de rotas (ex: src/AppRoutes.js):
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {Home} from './Components/Home';
+import {About} from './Components/About';
+
+const AppRoutes = () => {
+return (
+    <Router>
+    <Routes>
+        <Route path="/" element={<Home></Home>} />
+        <Route path="/about"  element={<About></About>} />
+    </Routes>
+    </Router>
+);
+};
+
+export default AppRoutes;
+
+        2. Utilize as rotas no seu componente principal (ex: src/App.js):
+
+import React from 'react';
+import Routes from './Rotas';
+
+function App() {
+return (
+    <div className="App">
+    <Routes />
+    </div>
+);
+}
+
+export default App;
+
+
+-- Transformando o app react de js para ts --
+
+1º Abra o terminal e digite:
+    npm install --save typescript @types/react @types/react-dom @types/jest
+
+2º Renomei os arquivos para ts e tsx
+    Arquivos que contêm JSX: Renomeie arquivos com JSX de .js para .tsx (ex: App.js para App.tsx).
+    Arquivos que não contêm JSX: Renomeie arquivos sem JSX de .js para .ts (ex: index.js para index.ts).
+
+3º Configurar o TypeScript
+    (a) Crie um arquivo chamado 
+        tsconfig.json
+    (b) Adicione o seguinte código
+
+{
+    "compilerOptions": {
+    "jsx": "react-jsx",
+    "target": "es2016",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+    },
+    "include": ["src"]
+}
+
+4º Adicione o código abaixo no arquivo src/index.jsx
+
+    Troque o código velho pelo novo 
+
+    -- Código Velho --
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+    -- Código  Novo--    
+
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+throw new Error("O elemento com ID 'root' não foi encontrado.");
+}
+
+const root = ReactDOM.createRoot(rootElement);
+
+5º Digite novamente no terminal
+    npm start
+
+
+--- Agora já deve estar funcionando ---
