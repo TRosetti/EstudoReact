@@ -6,7 +6,7 @@ import { Controller } from "react-hook-form"
 const Input = ({leftIcon, name, control, errorMessage, ...rest}: IInput) => {
   return (
     <>
-      <InputContainer>
+      <InputContainer className='InputContainer'>
         {leftIcon ? (<IconContainer>{leftIcon}</IconContainer>): null }
 
         <Controller

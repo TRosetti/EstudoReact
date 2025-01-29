@@ -1,7 +1,9 @@
-import React from 'react';
 import logo from '../../assets/logo.webp';
 import { Button } from '../button';
-import {IHeader} from './types'
+
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
+
  
 import { 
   Container,
@@ -15,13 +17,22 @@ import {
 
 } from './styles';
 
-const Header = ({autenticado}: IHeader) => {
+
+
+
+   
+const Header = () => {
+  const {user, handleSingOut} = useAuth()
+
   return (
     <Wrapper>
       <Container>
         <Row>
-          <img src={logo} alt="Logo da DIO" height="25px" />
-          {autenticado ? (
+          <Link to="/">
+            <img src={logo} alt="Logo da DIO" height="25px" />
+          </Link>
+         
+          {user.id ? (
             <>
                 <BuscarInputContainer>
                 <Input placeholder='Buscar...'/>
@@ -34,8 +45,12 @@ const Header = ({autenticado}: IHeader) => {
         </Row>
         <Row>
 
-          {autenticado ? (
-            <UserPicture src='https://avatars.githubusercontent.com/u/105075815?v=4' />
+          {user.id ? (
+            <>
+              <UserPicture src='https://avatars.githubusercontent.com/u/105075815?v=4' />
+              <a href="/" onClick={handleSingOut} style={{marginLeft: "10px", color: "#fff"}}>Sair</a>
+            </>
+            
           ) : (
             <>
               <MenuRight href='#'>Home</MenuRight>

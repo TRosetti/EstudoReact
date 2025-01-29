@@ -4,19 +4,19 @@
       "id": "1",
       "email": "thiagorosetti1234@gmail.com",
       "name": "Thiago Rosetti",
-      "senha": "thiago1234"
+      "password": "thiago1234"
     },
     {
       "id": "2",
       "email": "lucasrosetti@gmail.com",
       "name": "Lucas Rosetti",
-      "senha": "lucas1234"
+      "password": "lucas1234"
     },
     {
       "id": "64f6",
       "nome": "Enzo Rosetti",
       "email": "enzo.rosetti@gmail.com",
-      "senha": "teste01"
+      "password": "teste01"
     }
   ]
 }

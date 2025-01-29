@@ -3,13 +3,16 @@ import {Card} from '../../components/card'
 import {UserInfo} from '../../components/userInfo'
 import {Container, Column, Title, TitleHighlight} from './styles'
 
+
 const Feed = () => {
+
     return (
         <div>
-            <Header autenticado={true} />
+            <Header  />
             <Container>
                 <Column flex={3}>
                     <Title>Feed</Title>
+
                     <Card />
                     <Card />
                     <Card />

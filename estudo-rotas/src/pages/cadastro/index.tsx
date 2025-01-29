@@ -38,7 +38,7 @@ const Cadastro = () => {
             const response = await api.post("users", {
                 nome: formData.nome,
                 email: formData.email,
-                senha: formData.password,
+                password: formData.password,
             });
 
             if (response.status === 201) {

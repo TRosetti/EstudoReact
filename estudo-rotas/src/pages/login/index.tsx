@@ -1,6 +1,5 @@
 
 import {MdEmail, MdLock } from 'react-icons/md'; // icones de email e cadeadi
-import { useNavigate } from 'react-router-dom'; // utilizado para navegação
 
 import { Button } from '../../components/button';
 import {Header} from '../../components/header'
@@ -9,10 +8,11 @@ import {Input}from '../../components/Input';
 import { useForm } from "react-hook-form"; // hook para mexer no formulário
 import {CriarText, Column, Container, EsqueciText, Row, SubTitleLogin, Title, TitleLogin, Wrapper} from './styles'
 
-import { api } from "../../services/api";
+
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { IformData } from './types';
+import { useAuth } from '../../hooks/useAuth';
 
 const schema = yup.object({
     email: yup.string().email('email não é válido').required('Campo obrigatório'),
@@ -22,8 +22,8 @@ const schema = yup.object({
 
 const Login = () => {
 
-    const navigate = useNavigate();
-
+    
+    const {handleLogin} = useAuth();
 
     const { control, handleSubmit, formState: { errors, isValid } } = useForm<IformData>({
         resolver: yupResolver(schema),
@@ -33,16 +33,7 @@ const Login = () => {
     console.log(isValid, errors)
 
     const onSubmit = async (formData: IformData) => {
-        try {
-           const { data } = await api.get(`users?email=${formData.email}&senha=${formData.password}`);
-            if(data.length === 1 ){
-                navigate('/feed')
-            }else{
-               alert("Email ou senha inválida.")
-            }
-        } catch (error) {
-           alert("Houve um erro, error: " + error)
-        }
+        handleLogin(formData)
     }
     
 
